@@ -48,9 +48,19 @@ public class Main {
                 break;
             default:
                 System.out.println("Немає такого тижня");
-
         }
 
+        String dayOfTheWeek = switch (number) {
+            case 1 -> "Понеділок";
+            case 2 -> "Вівторок";
+            case 3 -> "Середа";
+            case 4 -> "Четвер";
+            case 5 -> "П'ятниця";
+            case 6, 7 -> "Вихідні!!!";
+            default -> "Немає такого тижня";
+        };
+
+        System.out.println(dayOfTheWeek);
 
     }
 }
