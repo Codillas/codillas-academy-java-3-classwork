@@ -1,5 +1,8 @@
 package lesson_16_class_object.animals;
 
+import lesson_16_class_object.food.Fish;
+import lesson_16_class_object.fun.Quack;
+
 public class Cat {
 
     // Додати поля класу: ім’я, вік, вага
@@ -45,6 +48,27 @@ public class Cat {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    // Шо може робити кіт?
+    // голос
+    // голос + параметр
+    // їсти щось
+
+    public void voice() {
+        System.out.println("Мяуууууу!");
+    }
+
+    public void voice(String word) {
+        System.out.println("Мяуууууу! " +  word);
+    }
+
+    public Quack eat(Fish fish){
+        System.out.println("Дякую! Я поїв рибу типу: " +  fish.getType());
+
+        Quack quack = new Quack("Рибний");
+        return quack;
+    }
+
 
     @Override
     public String toString() {
