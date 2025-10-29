@@ -1,6 +1,8 @@
 package lesson_16_class_object;
 
 import lesson_16_class_object.animals.Cat;
+import lesson_16_class_object.food.Fish;
+import lesson_16_class_object.fun.Quack;
 
 public class Main {
     static void main() {
@@ -23,5 +25,15 @@ public class Main {
 
         // toString()
         System.out.println(amour.toString());
+
+        amour.voice();
+
+        amour.voice("Покормииии!");
+
+        Fish fish = new Fish("Лосось");
+        Quack quack = amour.eat(fish);
+
+        System.out.println(quack.getType());
+
     }
 }
