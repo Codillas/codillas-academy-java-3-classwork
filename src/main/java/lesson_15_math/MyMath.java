@@ -52,4 +52,23 @@ public class MyMath {
         return result;
     }
 
+    public static int getFactorial(int n) {
+        int result = 1;
+        for (int i = 1; i <= n; i++) {
+            result = result * i;
+        }
+        return result;
+    }
+
+    public static int getFactorialRecursive(int n) {
+        if (n == 1) { // Задаємо умову виходу з рекурсії при досягненні 1
+            return 1;
+        }
+        else {
+            // Якщо аргумент не 1, то множимо поточне значення на результат виконання
+            // наступного заходу у цей метод (куди ми посилаємо поточне значення - 1)
+            return n * getFactorialRecursive(n - 1);
+        }
+    } // –> 3 * 2 * 1 = 6
+
 }
