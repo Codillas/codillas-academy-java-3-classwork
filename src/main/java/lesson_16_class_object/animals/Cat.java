@@ -9,6 +9,7 @@ public class Cat {
     private String name;
     private int age;
     private double weight;
+    private Breed breed;
 
 
     // Створити конструктор без параметрів і додати sout “Викликано конструктор без параметрів”
@@ -17,12 +18,13 @@ public class Cat {
     }
 
     // Створити конструктор із параметрами
-    public Cat(String name, int age, double weight) {
+    public Cat(String name, int age, double weight, Breed breed) {
         System.out.println("Викликано конструктор з параметрами");
 
         this.name = name;
         this.age = age;
         this.weight = weight;
+        this.breed = breed;
     }
 
     public String getName() {
@@ -49,10 +51,13 @@ public class Cat {
         this.weight = weight;
     }
 
-    // Шо може робити кіт?
-    // голос
-    // голос + параметр
-    // їсти щось
+    public Breed getBreed() {
+        return this.breed;
+    }
+
+    public void setBreed(Breed breed) {
+        this.breed = breed;
+    }
 
     public void voice() {
         System.out.println("Мяуууууу!");
@@ -76,6 +81,7 @@ public class Cat {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", weight=" + weight +
+                ", breed=" + breed +
                 '}';
     }
 }
