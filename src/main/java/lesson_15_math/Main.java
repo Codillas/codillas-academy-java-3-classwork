@@ -34,5 +34,16 @@ public class Main {
 
         int rounded = MyMath.round(4.1);
         System.out.println(rounded);
+
+        // обчислення фактораіла числа ітеративно
+        int n = 4;
+        int factorial = MyMath.getFactorial(n);
+        System.out.println("Факторіал числа " + n + " є " + factorial);
+
+        // обчислення фактораіла числа рекурсивно
+        int k = 3;
+        int factorialRecursive = MyMath.getFactorialRecursive(k);
+        System.out.println("Факторіал числа " + k + " є " + factorialRecursive);
+
     }
 }
