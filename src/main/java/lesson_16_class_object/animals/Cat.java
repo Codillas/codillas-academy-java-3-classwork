@@ -3,6 +3,8 @@ package lesson_16_class_object.animals;
 import lesson_16_class_object.food.Fish;
 import lesson_16_class_object.fun.Quack;
 
+import java.util.Objects;
+
 public class Cat {
 
     // Додати поля класу: ім’я, вік, вага
@@ -64,11 +66,11 @@ public class Cat {
     }
 
     public void voice(String word) {
-        System.out.println("Мяуууууу! " +  word);
+        System.out.println("Мяуууууу! " + word);
     }
 
-    public Quack eat(Fish fish){
-        System.out.println("Дякую! Я поїв рибу типу: " +  fish.getType());
+    public Quack eat(Fish fish) {
+        System.out.println("Дякую! Я поїв рибу типу: " + fish.getType());
 
         Quack quack = new Quack("Рибний");
         return quack;
@@ -84,4 +86,39 @@ public class Cat {
                 ", breed=" + breed +
                 '}';
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Cat)) {
+            return false;
+        }
+
+        Cat otherCat = (Cat) obj;
+
+        return this.name.equals(otherCat.name)
+                && this.age == otherCat.age
+                && this.weight == otherCat.weight
+                && this.breed == otherCat.breed;
+    }
+
+    @Override
+    public int hashCode() {
+        int age = this.age;
+        int weight = (int) this.weight;
+        int name = Objects.hash(this.name);
+        int breed = Objects.hash(this.breed);
+
+        return 31 * (age + weight + name + breed);
+    }
+
+
 }

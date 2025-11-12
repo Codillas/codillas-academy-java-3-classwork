@@ -26,6 +26,7 @@ public class Main {
         System.out.println("Порода кота: " + barsik.getBreed());
 
         Cat amour = new Cat("Amour", 16, 4.1, Breed.SERVAL);
+        Cat cat2 = new Cat("Amour", 16, 4.1, Breed.SERVAL);
 
         System.out.println("Кота звати: " + amour.getName());
         System.out.println("Вік кота: " + amour.getAge());
@@ -55,5 +56,8 @@ public class Main {
             default -> System.out.println("Якась інша порода");
         }
 
+        System.out.println(barsik.equals(amour));
+        System.out.println(barsik.hashCode());
+        System.out.println(amour.hashCode());
     }
 }
