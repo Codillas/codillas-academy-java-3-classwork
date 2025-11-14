@@ -5,12 +5,10 @@ import lesson_16_class_object.fun.Quack;
 
 import java.util.Objects;
 
-public class Cat {
+public class Cat extends Animal {
 
     // Додати поля класу: ім’я, вік, вага
     private String name;
-    private int age;
-    private double weight;
     private Breed breed;
 
 
@@ -23,9 +21,9 @@ public class Cat {
     public Cat(String name, int age, double weight, Breed breed) {
         System.out.println("Викликано конструктор з параметрами");
 
+        super(weight, age);
+
         this.name = name;
-        this.age = age;
-        this.weight = weight;
         this.breed = breed;
     }
 
@@ -37,22 +35,6 @@ public class Cat {
         this.name = name;
     }
 
-    public int getAge() {
-        return this.age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public double getWeight() {
-        return this.weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public Breed getBreed() {
         return this.breed;
     }
@@ -61,12 +43,17 @@ public class Cat {
         this.breed = breed;
     }
 
+    @Override
     public void voice() {
         System.out.println("Мяуууууу!");
     }
 
     public void voice(String word) {
         System.out.println("Мяуууууу! " + word);
+    }
+
+    public void мурчати(){
+        System.out.println("Мурррррррр");
     }
 
     public Quack eat(Fish fish) {
@@ -81,8 +68,8 @@ public class Cat {
     public String toString() {
         return "Cat{" +
                 "name='" + name + '\'' +
-                ", age=" + age +
-                ", weight=" + weight +
+                ", age=" + super.getAge() +
+                ", weight=" + super.getWeight() +
                 ", breed=" + breed +
                 '}';
     }
@@ -105,20 +92,22 @@ public class Cat {
         Cat otherCat = (Cat) obj;
 
         return this.name.equals(otherCat.name)
-                && this.age == otherCat.age
-                && this.weight == otherCat.weight
+                && super.getAge() == otherCat.getAge()
+                && super.getWeight() == otherCat.getWeight()
                 && this.breed == otherCat.breed;
     }
 
     @Override
     public int hashCode() {
-        int age = this.age;
-        int weight = (int) this.weight;
+        int age = super.getAge();
+        int weight = (int) super.getWeight();
         int name = Objects.hash(this.name);
         int breed = Objects.hash(this.breed);
 
         return 31 * (age + weight + name + breed);
     }
+
+
 
 
 }
