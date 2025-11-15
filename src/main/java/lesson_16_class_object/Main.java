@@ -3,8 +3,10 @@ package lesson_16_class_object;
 import lesson_16_class_object.animals.Breed;
 import lesson_16_class_object.animals.Cat;
 import lesson_16_class_object.animals.Fox;
+import lesson_16_class_object.animals.Racoon;
 import lesson_16_class_object.food.Fish;
 import lesson_16_class_object.fun.Quack;
+import lesson_16_class_object.util.GroomingSalon;
 
 public class Main {
     static void main() {
@@ -61,16 +63,21 @@ public class Main {
         System.out.println(barsik.hashCode());
         System.out.println(amour.hashCode());
 
-
-
         Fox fox = new Fox();
         fox.setAge(3);
         fox.setWeight(4);
         fox.setRabies(false);
 
-        fox.voice();
 
-        amour.voice();
-        amour.мурчати();
+        System.out.println("------------------------");
+        GroomingSalon groomingSalon = new GroomingSalon("Paws & Tailsssss");
+
+        groomingSalon.groom(amour);
+        groomingSalon.groom(fox);
+
+        Racoon racoon = new Racoon();
+        groomingSalon.groom(racoon);
+
+
     }
 }
