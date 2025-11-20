@@ -13,7 +13,6 @@ public class Forest {
 
     public Forest(int animalsAmount) {
         this.animals = new Animal[animalsAmount];
-
         // {null, null, null, ... null}
     }
 

@@ -1,5 +1,6 @@
 package lesson_33_optional;
 
+import lesson_16_class_object.animals.Racoon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -31,4 +32,28 @@ class ForestTest {
         // windows: alt + control + L
     }
 
+
+    @Test
+    void shouldAddANewAnimalToTheForest() throws ForestIsFullException {
+        // given
+        Forest forest = new Forest(1);
+
+        // when
+        forest.addAnimal(new Racoon());
+        int animalsAmount = forest.getAnimalsAmount();
+
+        // then
+        Assertions.assertEquals(1, animalsAmount);
+    }
+
+    @Test
+    void shouldNotAddANewAnimalToTheForestIfForestIsFull() throws ForestIsFullException {
+        // given
+        Forest forest = new Forest(1);
+        forest.addAnimal(new Racoon());
+
+        // when & then
+        Assertions.assertThrows(ForestIsFullException.class,
+                () -> forest.addAnimal(new Racoon()));
+    }
 }
