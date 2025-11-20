@@ -2,6 +2,8 @@ package lesson_33_optional;
 
 import lesson_16_class_object.animals.Animal;
 
+import java.util.Optional;
+
 // клікнути на назву класа і натиснути
 // macOS: option + Enter
 // windows: alt + Enter
@@ -37,5 +39,8 @@ public class Forest {
         }
     }
 
+    public Optional<Animal> getFirstAnimal() {
+        return Optional.ofNullable(this.animals[0]);
+    }
 
 }
