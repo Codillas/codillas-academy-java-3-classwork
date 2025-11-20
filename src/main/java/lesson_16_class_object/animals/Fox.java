@@ -30,4 +30,11 @@ public class Fox extends Animal{
     public void setRabies(boolean rabies) {
         this.rabies = rabies;
     }
+
+    @Override
+    public String toString() {
+        return "Fox{" +
+                "rabies=" + rabies +
+                '}';
+    }
 }
