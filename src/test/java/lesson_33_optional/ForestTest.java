@@ -1,8 +1,12 @@
 package lesson_33_optional;
 
+import lesson_16_class_object.animals.Animal;
+import lesson_16_class_object.animals.Cat;
 import lesson_16_class_object.animals.Racoon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
 
 
 class ForestTest {
@@ -55,5 +59,32 @@ class ForestTest {
         // when & then
         Assertions.assertThrows(ForestIsFullException.class,
                 () -> forest.addAnimal(new Racoon()));
+    }
+
+    @Test
+    void shouldGetFirstAnimal() throws ForestIsFullException {
+        // given
+        Forest forest = new Forest(1);
+        forest.addAnimal(new Cat());
+
+        // when
+        Optional<Animal> optionalAnimal = forest.getFirstAnimal();
+
+        // then
+        Assertions.assertTrue(optionalAnimal.isPresent());
+        Animal animal = optionalAnimal.get();
+        Assertions.assertEquals(Cat.class, animal.getClass());
+    }
+
+    @Test
+    void shouldNotGetFirstAnimalIfThereAreNoAnimalsInTheForest() {
+        // given
+        Forest forest = new Forest(1);
+
+        // when
+        Optional<Animal> optionalAnimal = forest.getFirstAnimal();
+
+        // then
+        Assertions.assertTrue(optionalAnimal.isEmpty());
     }
 }
