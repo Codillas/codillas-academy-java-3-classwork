@@ -43,4 +43,14 @@ public class Forest {
         return Optional.ofNullable(this.animals[0]);
     }
 
+    public Optional<Animal> getAnimalByAge(int age) {
+        for (Animal animal : animals) {
+            if (animal.getAge() == age) {
+                return Optional.of(animal);
+            }
+        }
+
+        return Optional.empty();
+    }
+
 }

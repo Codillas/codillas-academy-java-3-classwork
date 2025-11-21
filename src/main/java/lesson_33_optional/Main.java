@@ -13,16 +13,21 @@ public class Main {
         Forest forest = new Forest(2);
 
         Fox fox = new Fox();
-        Cat cat = new Cat();
-        Racoon racoon = new Racoon();
+        fox.setAge(3);
 
-//        try {
-//        forest.addAnimal(fox);
-//        forest.addAnimal(cat);
-//        forest.addAnimal(racoon);
-//        } catch (ForestIsFullException e) {
-//            System.out.println(e.getMessage());
-//        }
+        Cat cat = new Cat();
+        cat.setAge(4);
+
+        Racoon racoon = new Racoon();
+        racoon.setAge(5);
+
+        try {
+        forest.addAnimal(fox);
+        forest.addAnimal(cat);
+        forest.addAnimal(racoon);
+        } catch (ForestIsFullException e) {
+            System.out.println(e.getMessage());
+        }
 
         Optional<Animal> optionalAnimal = forest.getFirstAnimal();
 
@@ -31,6 +36,15 @@ public class Main {
             animal.voice();
         } else {
             System.out.println("Тварини немає");
+        }
+
+        Optional<Animal> animalOptional = forest.getAnimalByAge(5);
+
+        if (animalOptional.isPresent()) {
+            Animal animal = animalOptional.get();
+            animal.voice();
+        } else {
+            System.out.println("Такої тварини не існує!");
         }
 
     }

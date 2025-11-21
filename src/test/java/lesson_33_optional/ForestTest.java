@@ -87,4 +87,37 @@ class ForestTest {
         // then
         Assertions.assertTrue(optionalAnimal.isEmpty());
     }
+
+    @Test
+    void shouldGetAnimalByAge() throws ForestIsFullException {
+        // given
+        Racoon racoon = new Racoon();
+        racoon.setAge(5);
+
+        Forest forest = new Forest(1);
+        forest.addAnimal(racoon);
+
+        // when
+        Optional<Animal> optionalAnimal = forest.getAnimalByAge(5);
+
+        // then
+        Assertions.assertTrue(optionalAnimal.isPresent());
+        Assertions.assertEquals(racoon, optionalAnimal.get());
+    }
+
+    @Test
+    void shouldNotGetAnimalByAgeIfThereIsNoSuchAnAnimal() throws ForestIsFullException {
+        // given
+        Racoon racoon = new Racoon();
+        racoon.setAge(5);
+
+        Forest forest = new Forest(1);
+        forest.addAnimal(racoon);
+
+        // when
+        Optional<Animal> optionalAnimal = forest.getAnimalByAge(4);
+
+        // then
+        Assertions.assertTrue(optionalAnimal.isEmpty());
+    }
 }
