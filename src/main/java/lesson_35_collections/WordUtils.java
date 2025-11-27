@@ -1,6 +1,8 @@
 package lesson_35_collections;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class WordUtils {
     public String getShortestWord(List<String> words) {
@@ -55,5 +57,41 @@ public class WordUtils {
 
         // shortestWord = "an"
         return shortestWord;
+    }
+
+    public Set<String> getUniqueWordsFromSentence(String sentence) {
+        // "Mykola ate a cucumber and a tomato and a carrot"
+
+
+        String[] words = sentence.split(" ");
+
+        return new HashSet<>(List.of(words));
+
+        // polymorphism = [HashSet is a Set] ALSO [TreeSet is a Set]
+
+//        String currentWord = "";
+//
+//        for (int i = 0; i < sentence.length(); i++) {
+//            char character = sentence.charAt(i);
+//
+//            if (character == ' ') {
+//                // currentWord = "Mykola"
+//
+//                uniqueWords.add(currentWord);
+//
+//                currentWord = "";
+//
+//                continue;
+//            }
+//
+//            // "" + ' ' -> " "
+//            currentWord += character;
+//        }
+//
+//        // currentWord = "carrot"
+//
+//        uniqueWords.add(currentWord);
+//
+//        return uniqueWords;
     }
 }

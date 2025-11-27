@@ -16,4 +16,12 @@ void main() {
             wordUtils.getShortestWord(words);
 
     System.out.println("Shortest word: " + shortestWord);
+
+
+    String sentence = "Mykola ate a cucumber and a tomato and a carrot ";
+
+    Set<String> uniqueWords = wordUtils.getUniqueWordsFromSentence(sentence);
+
+    System.out.println(uniqueWords);
+    // uniqueWords -> "Mykola", "ate", "a", "cucumber", "and", "tomato", "carrot" (in any order)
 }
