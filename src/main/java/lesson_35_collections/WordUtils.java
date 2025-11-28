@@ -103,11 +103,11 @@ public class WordUtils {
         for (String word : words) {
             // boolean isNotDuplicate = uniqueWords.add(word); // (IS NOT A DUPLICATE)
             // NOT (IS NOT A DUPLICATE)
-            // НЕ Є (НЕ Є ДУПЛІКАТ) -> Є ДУПЛІКАТ
+            // НЕ Є (НЕ Є ДУБЛІКАТ) -> Є ДУБЛІКАТ
             // ! -> (НЕ Є)
 
-            // isNotDuplicate -> НЕ Є ДУПЛІКАТ
-            // !isNotDuplicate -> (НЕ Є) (НЕ Є ДУПЛІКАТ) -> ДУПЛІКАТ -> isDuplicate
+            // isNotDuplicate -> НЕ Є ДУБЛІКАТ
+            // !isNotDuplicate -> (НЕ Є) (НЕ Є ДУБЛІКАТ) -> ДУБЛІКАТ -> isDuplicate
 
             boolean isDuplicate = !uniqueWords.add(word);
 
