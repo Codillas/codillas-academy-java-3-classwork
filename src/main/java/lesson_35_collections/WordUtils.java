@@ -1,8 +1,6 @@
 package lesson_35_collections;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordUtils {
     public String getShortestWord(List<String> words) {
@@ -62,7 +60,6 @@ public class WordUtils {
     public Set<String> getUniqueWordsFromSentence(String sentence) {
         // "Mykola ate a cucumber and a tomato and a carrot"
 
-
         String[] words = sentence.split(" ");
 
         return new HashSet<>(List.of(words));
@@ -93,5 +90,106 @@ public class WordUtils {
 //        uniqueWords.add(currentWord);
 //
 //        return uniqueWords;
+    }
+
+    public Set<String> getDuplicatedWordsFromSentence(String sentence) {
+        // Today was a very great day and a very nice weather and I was very happy
+
+        String[] words = sentence.split(" ");
+
+        Set<String> uniqueWords = new HashSet<>();
+        Set<String> duplicatedWords = new HashSet<>();
+
+        for (String word : words) {
+            // boolean isNotDuplicate = uniqueWords.add(word); // (IS NOT A DUPLICATE)
+            // NOT (IS NOT A DUPLICATE)
+            // НЕ Є (НЕ Є ДУПЛІКАТ) -> Є ДУПЛІКАТ
+            // ! -> (НЕ Є)
+
+            // isNotDuplicate -> НЕ Є ДУПЛІКАТ
+            // !isNotDuplicate -> (НЕ Є) (НЕ Є ДУПЛІКАТ) -> ДУПЛІКАТ -> isDuplicate
+
+            boolean isDuplicate = !uniqueWords.add(word);
+
+            // boolean isDuplicate = !( uniqueWords.add(word) /* TRUE or FALSE */ ); /* FALSE or TRUE */
+            // result is TRUE when word is NOT a duplicate
+            // result is FALSE when word is a duplicate
+
+            if (isDuplicate) {
+                duplicatedWords.add(word);
+            }
+        }
+
+        return duplicatedWords;
+
+//        Set<String> duplicatedWords = new HashSet<>();
+//
+//        for (int currentWordIndex = 0; currentWordIndex < words.length; currentWordIndex++) {
+//            String currentWord = words[currentWordIndex];
+//
+//            // currentWordIndex 0: currentWord = "Today"
+//            // currentWordIndex 1: currentWord = "was"
+//            // ...
+//            // currentWordIndex 15: currentWord = "happy"
+//
+//            for (int anotherWordIndex = 0; anotherWordIndex < words.length; anotherWordIndex++) {
+//                String anotherWord = words[anotherWordIndex];
+//
+//                // anotherWordIndex 0: anotherWord = "Today"
+//                // anotherWordIndex 1: anotherWord = "was"
+//                // ...
+//                // anotherWordIndex 15: anotherWord = "happy"
+//
+//                if (anotherWordIndex == currentWordIndex) {
+//                    continue;
+//                }
+//
+//                if (currentWord.equals(anotherWord)) {
+//                    duplicatedWords.add(currentWord);
+//                }
+//            }
+//        }
+//
+//        return duplicatedWords;
+    }
+
+    // K -> V
+    // word -> count
+    public Map<String, Integer> getWordsCount(String sentence) {
+        // Today was a very great day and a very nice weather and I was very happy
+
+        Map<String, Integer> wordsCount = new HashMap<>(); // {}
+
+        String[] words = sentence.split(" ");
+
+
+        for (String word : words) {
+
+            boolean wordsCountContainsWord = wordsCount.containsKey(word);
+
+            int currentCount = 0;
+
+            if (wordsCountContainsWord) {
+                currentCount = wordsCount.get(word);
+            }
+
+            int newWordCount = currentCount + 1;
+
+            wordsCount.put(word, newWordCount);
+
+            // Iteration 0 -> word = "Today"
+            // wordsCount = {}
+
+            // Iteration 1 -> word = "Today"
+            // wordsCount = {"Today" : 1 }
+
+            // int currentWordCount = wordsCount.getOrDefault(word, 0);
+
+            // int newWordCount = currentWordCount + 1;
+
+            // wordsCount.put(word, newWordCount);
+        }
+
+        return wordsCount;
     }
 }
