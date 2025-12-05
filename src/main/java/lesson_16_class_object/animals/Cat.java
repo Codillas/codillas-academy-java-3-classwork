@@ -65,17 +65,6 @@ public class Cat extends Animal {
 
 
     @Override
-    public String toString() {
-        return "Cat{" +
-                "name='" + name + '\'' +
-                ", age=" + super.getAge() +
-                ", weight=" + super.getWeight() +
-                ", breed=" + breed +
-                '}';
-    }
-
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -107,7 +96,11 @@ public class Cat extends Animal {
         return 31 * (age + weight + name + breed);
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", breed=" + breed +
+                '}';
+    }
 }
