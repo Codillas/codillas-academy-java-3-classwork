@@ -1,4 +1,4 @@
-package lesson_41_comparing;
+package lesson_40_comparing;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
