@@ -14,11 +14,19 @@ public class Driver implements Comparable<Driver> {
     @Override
     public int compareTo(Driver otherDriver) {
 
-        if (this.points == otherDriver.points) {
-            return Integer.compare(this.age, otherDriver.age);
-        } else if (this.points < otherDriver.points) {
-            return -1;
+        int pointsCompareResult = Integer.compare(this.points, otherDriver.points);
+
+        if (pointsCompareResult != 0) {
+            return pointsCompareResult;
         }
-        return 1;
+
+        return Integer.compare(this.age, otherDriver.age);
+
+//        if (this.points == otherDriver.points) {
+//            return Integer.compare(this.age, otherDriver.age);
+//        } else if (this.points < otherDriver.points) {
+//            return -1;
+//        }
+//        return 1;
     }
 }
