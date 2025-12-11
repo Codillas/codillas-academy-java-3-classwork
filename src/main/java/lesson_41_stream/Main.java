@@ -1,8 +1,5 @@
 package lesson_41_stream;
 
-import lesson_41_stream.classwork.Cat;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
