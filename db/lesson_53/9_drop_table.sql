@@ -1,0 +1,6 @@
+DROP TABLE cool_car;
+
+DROP TABLE IF EXISTS cool_car;
+
+DROP TABLE IF EXISTS coolcar;
+DROP TABLE IF EXISTS customer;

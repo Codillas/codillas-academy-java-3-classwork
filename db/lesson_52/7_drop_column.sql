@@ -1,7 +1,7 @@
 ALTER TABLE Car
-    DROP COLUMN bolor,
-    DROP COLUMN aolor,
-    DROP COLUMN holor,
-    DROP COLUMN dolor;
+    DROP COLUMN IF EXISTS bolor,
+    DROP COLUMN IF EXISTS aolor,
+    DROP COLUMN IF EXISTS holor,
+    DROP COLUMN IF EXISTS dolor;
 
 SELECT * FROM Car;

@@ -1,0 +1,8 @@
+SELECT * FROM car;
+SELECT COUNT(*) FROM car;
+
+SELECT DISTINCT * FROM car;
+
+-- SELECT COUNT (DISTINCT *) FROM car; | DOSE NOT WORK!
+SELECT COUNT (DISTINCT (brand, model, year, color)) FROM car;
+
