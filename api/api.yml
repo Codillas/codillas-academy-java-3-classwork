@@ -1,0 +1,138 @@
+openapi: 3.1.1
+
+info:
+  title: Loyalty Card API
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:8080
+
+tags:
+  - name: Auth
+    description: Auth endpoints.
+
+paths:
+  /login:
+    post:
+      summary: Login endpoint.
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /sign-up:
+    post:
+      summary: Sign Up endpoint.
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    # ======
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: info@codillas.com
+        password:
+          type: string
+          format: password
+          example: qwerty123456
+    # ======
+    TokenResponse:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          format: text
+          description: JWT token.
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30
+    # ======
+    SignUpRequest:
+      type: object
+      required:
+        - name
+        - phoneNumber
+        - email
+        - password
+      properties:
+        name:
+          type: string
+          example: Vasya Pupkin
+        phoneNumber:
+          type: string
+          example: +491756489871
+        email:
+          type: string
+          format: email
+          example: info@codillas.com
+        password:
+          type: string
+          format: password
+          example: qwerty123456
+    # ======
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Error message.
