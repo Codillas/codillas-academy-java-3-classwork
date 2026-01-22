@@ -16,6 +16,10 @@ tags:
     description: Endpoints to CRUD transactions.
   - name: Customers
     description: Endpoints to CRUD customers.
+  - name: Admins
+    description: Endpoints to CRUD admins.
+  - name: Cards
+    description: Endpoints to control cards.
 
 paths:
   # Auth
@@ -122,6 +126,204 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+
+  # Admins
+  /admins:
+    post:
+      summary: Create admin.
+
+      tags:
+        - Admins
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Admin'
+
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      summary: Get all admins.
+
+      tags:
+        - Admins
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Admin'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /admins/{adminId}:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/AdminId'
+
+      summary: Get admin.
+
+      tags:
+        - Admins
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /admins/{adminId}/activate:
+    put:
+      parameters:
+        - $ref: '#/components/parameters/AdminId'
+
+      summary: Activate Admin.
+
+      tags:
+        - Admins
+
+      # We do not need a request body as we only need to change the status.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /admins/{adminId}/block:
+    put:
+      parameters:
+        - $ref: '#/components/parameters/AdminId'
+
+      summary: Block Admin.
+
+      tags:
+        - Admins
+
+      # We do not need a request body as we only need to change the status.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   # Customers
   /customers:
     get:
@@ -152,7 +354,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
 
   /customers/{customerId}:
 
@@ -244,8 +445,91 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /customers/{customerId}/activate:
+    put:
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
 
+      summary: Activate customer.
 
+      tags:
+        - Customers
+
+      # We do not need a request body as we only need to change the status.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /customers/{customerId}/block:
+    put:
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+
+      summary: Block customer.
+
+      tags:
+        - Customers
+
+      # We do not need a request body as we only need to change the status.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
   # Transactions
   /cards/{cardId}/transactions:
@@ -382,7 +666,7 @@ paths:
         - $ref: '#/components/parameters/CardId'
         - $ref: '#/components/parameters/TransactionId'
 
-      summary: Cancel a specific transaction for a specific card.
+      summary: Cancel transaction.
 
       tags:
         - Transactions
@@ -420,6 +704,136 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  # Cards
+  /cards/{cardId}:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/CardId'
+
+      summary: Get card by ID.
+
+      tags:
+        - Cards
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /cards/{cardId}/activate:
+    put:
+      parameters:
+        - $ref: '#/components/parameters/CardId'
+
+      summary: Activate Card.
+
+      tags:
+        - Cards
+
+      # We do not need a request body as we only need to change the status.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /cards/{cardId}/block:
+    put:
+      parameters:
+        - $ref: '#/components/parameters/CardId'
+
+      summary: Block Card.
+
+      tags:
+        - Cards
+
+      # We do not need a request body as we only need to change the status.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   # === PARAMS ===
   parameters:
@@ -450,6 +864,15 @@ components:
         type: string
         format: uuid
       description: ID of the Customer.
+    # === ADMIN ===
+    AdminId:
+      name: adminId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: ID of the Admin.
 
   schemas:
     # ======
@@ -581,6 +1004,98 @@ components:
           type: string
           format: email
           example: test@gmail.com
+        status:
+          type: string
+          enum: [ ACTIVE, BLOCKED ]
+          example: ACTIVE
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          example: 2021-09-20T12:00:00Z
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: 2021-09-20T13:41:22Z
+          readOnly: true
+    # ======
+    Admin:
+      type: object
+      required:
+        - id
+        - name
+        - phone_number
+        - email
+        - status
+        - role
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 38ca31a9-a336-4087-ac97-d1ed40a2778e
+          readOnly: true
+        name:
+          type: string
+          example: Vasya Pupkin
+        phone_number:
+          type: string
+          example: +4917854652389
+        email:
+          type: string
+          format: email
+          example: test@gmail.com
+        password:
+          type: string
+          format: password
+          example: qwerty1234
+          writeOnly: true
+        status:
+          type: string
+          enum: [ ACTIVE, BLOCKED ]
+          example: ACTIVE
+          readOnly: true
+        role:
+          type: string
+          enum: [ SUPERUSER, ADMIN ]
+          example: ADMIN
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          example: 2021-09-20T12:00:00Z
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: 2021-09-20T13:41:22Z
+          readOnly: true
+    # ======
+    Card:
+      type: object
+      required:
+        - id
+        - customer_id
+        - balance
+        - status
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 38ca31a9-a336-4087-ac97-d1ed40a2778e
+          readOnly: true
+        customer_id:
+          type: string
+          format: uuid
+          example: 38ca31a9-a336-4087-ac97-d1ed40a2778e
+          readOnly: true
+        balance:
+          type: number
+          example: 100
         status:
           type: string
           enum: [ ACTIVE, BLOCKED ]
