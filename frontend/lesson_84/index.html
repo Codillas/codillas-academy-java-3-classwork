@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form</title>
+</head>
+<body>
+
+<h1>Login</h1>
+
+<form action="http://localhost:9090/login" method="POST">
+
+    <div>
+        <label for="emailInput">Email:</label>
+        <br>
+        <input
+                id="emailInput"
+                type="email"
+                name="email"
+                placeholder="Your email address">
+    </div>
+
+    <br>
+
+    <div>
+        <label for="passwordInput">Password:</label>
+        <br>
+        <input
+                id="passwordInput"
+                type="password"
+                name="myPassword"
+                placeholder="Your password"
+                required>
+    </div>
+
+    <br>
+
+    <div>
+        <div>
+            Gender:
+        </div>
+        <label for="genderInputMale">Male</label>
+        <input
+                id="genderInputMale"
+                type="radio"
+                name="gender"
+                value="male"
+                required>
+
+        <br>
+
+        <label for="genderInputX">X</label>
+        <input
+                id="genderInputX"
+                type="radio"
+                name="gender"
+                value="x">
+
+        <br>
+
+        <label for="genderInputFemale">Female</label>
+        <input
+                id="genderInputFemale"
+                type="radio"
+                name="gender"
+                value="female">
+    </div>
+
+    <br>
+
+    <div>
+        <label for="ageInput">Age:</label>
+        <input
+                id="ageInput"
+                type="number"
+                name="age"
+                min="1"
+                max="150"
+                required>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="dateInput">Birthdate:</label>
+        <input
+                id="dateInput"
+                type="date"
+                name="birthDate"
+                min="1997-01-01"
+                max="1997-01-31"
+                required>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="bioTextarea">Biography:</label>
+        <textarea
+                id="bioTextarea"
+                placeholder="This is my bio!"
+                rows="6"
+                cols="50"
+                maxlength="300"
+        ></textarea>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="citizenshipSection">
+            Citizenship:
+        </label>
+        <select name="citizenship" id="citizenshipSection">
+            <option value="UA">Ukraine</option>
+            <option value="DE">Germany</option>
+            <option value="CA">Canada</option>
+        </select>
+    </div>
+
+    <br>
+
+    <input
+            name="secretSanta"
+            type="hidden"
+            readonly
+            value="Ho-ho-ho">
+
+    <button type="submit">
+        Login
+    </button>
+</form>
+
+</body>
+</html>
