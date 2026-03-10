@@ -1,0 +1,62 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    padding: 16px;
+    margin: 0;
+}
+
+/*
+background-color 	– встановлює колір фону
+background-image 	– додає фонове зображення
+background-size 		– змінює розмір фонового зображення (cover, contain)
+background-position 	– визначає положення зображення
+background-repeat 	– керує повторенням фону (repeat, no-repeat)
+opacity 			– встановлює прозорість (від 0 до 1)
+*/
+
+.container {
+    width: 200px;
+    height: 200px;
+    border: 5px dotted pink;
+    border-radius: 100%;
+    /*background-color: #339233;*/
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIdBBh6M3CVpPQwn6IUO5muq3lbDw4wFNRxkxhcrEsOAc2UaYUBXH8R37eEDbNwawqTx5AwKrfg7_HKlmPgYo7Vbp09_8htl7xHGDb3Q&s=10");
+    background-size: 50px 100px;
+    background-repeat: no-repeat;
+    background-position: 120px center;
+    opacity: 1.0;
+
+    overflow: hidden;
+}
+
+.nested {
+    width: 500px;
+    height: 50px;
+    background-color: red;
+}
+
+p {
+    color: darkblue;
+    font-size: 1.25rem;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    text-align: justify;
+    line-height: 1.5;
+    letter-spacing: 0.25rem;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+/*.box-model {*/
+/*    background-color: black;*/
+/*    color: white;*/
+
+/*    width: 300px;*/
+/*    height: 50px;*/
+
+/*    border: 25px solid green;*/
+/*    padding: 10px;*/
+/*    margin: 30px;*/
+/*}*/
