@@ -1,0 +1,16 @@
+.partners {
+    border: 1px solid red;
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.partner {
+    border: 1px solid blue;
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
